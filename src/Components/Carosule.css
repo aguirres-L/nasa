@@ -16,7 +16,7 @@
   .container{
     /* border: solid 2px red; **/
     width: 800px;
-    height: 720px;
+    height: 660px;
     margin-left:26%;
     padding: 15px;
     text-align: center;
@@ -40,7 +40,7 @@
     background-color: grey;
     position: absolute;
     bottom: 0;
-    left: 51%;
+    left: 49%;
     color: white;
     border: solid rgba(128, 128, 128, 0);
     border-radius: 2px;
@@ -58,7 +58,7 @@
   .container{
    /* border: solid 2px red;*/
     width: 260px;
-    height: 470px;
+    height: 270px;
     margin-left:16%;
     padding: 15px;
     margin-top: 10%;

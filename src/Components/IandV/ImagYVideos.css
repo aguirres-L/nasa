@@ -1,0 +1,27 @@
+
+.container-img-nasa{
+    padding: 20px;
+    margin: 20px;
+    margin-left: 8%;
+}
+
+
+
+
+.img-nasa{
+    width: 150px;
+    height: 200px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px black;
+    margin: 2%;
+    transition: all .3s ease;
+}
+
+.img-nasa:hover{
+    box-shadow: 0px 0px 40px black;
+    transition: all .3s ease;
+    width: 160px;
+    height: 210px;
+    margin: 2.5%;
+    
+}

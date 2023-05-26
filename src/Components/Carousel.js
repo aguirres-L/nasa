@@ -49,7 +49,6 @@ const MyCarousel = () => {
       setInteraccion(true);
       setVisible1(null)
     }
-    alert('gola')
     console.log(interaccion)
     
     
@@ -69,7 +68,6 @@ const MyCarousel = () => {
     setVisible2(null)
     
     }
-    alert('gola')
     console.log(interaccion)
     
    //console.log(element.alt) // Obtengo info de la img que se ve en pantalla 
@@ -88,7 +86,6 @@ const MyCarousel = () => {
       setInteraccion(true);
       setVisible3(null)
     }
-    alert('gola')
     console.log(interaccion)
    //console.log(element.alt) // Obtengo info de la img que se ve en pantalla 
   }
@@ -106,7 +103,6 @@ const MyCarousel = () => {
     setVisible4(null)
     
     }
-    alert('gola')
     console.log(interaccion)
     
    
@@ -152,37 +148,30 @@ const MyCarousel = () => {
    
        <div className='container'  >
         <img src={img1} ref={myElementRef} alt=" 1" />
-        <h1> Rover Photos </h1>
-        <p> Proporciona acceso a las imágenes tomadas por los rovers en Marte</p>
-        <button className='ver-mas' onClick={handelUser1} >{interaccion?"Ver mas":"Cerrar"}</button>
+        <button className='ver-mas' onClick={handelUser1} >{interaccion?"▼":"▲"}</button>
       </div>
       
       <div className='container' >
         <img src={img2} ref={myElementRef} alt=" 2" />
-        <h1> NASA Image and Video</h1>
-        <p>Permite buscar imágenes, videos y archivos de audio relacionados con la NASA.</p>
-        <button className='ver-mas' onClick={handelUser2} >{interaccion?"Ver mas":"Cerrar"}</button>
+        <button className='ver-mas' onClick={handelUser2} >{interaccion?"▼":"▲"}</button>
       </div>
       
       <div className='container' >
         <img src={img3} ref={myElementRef} alt=" 3" />
-        <h1> Earth Imaging </h1>
-        <p> Ofrece acceso a imágenes diarias de la Tierra tomadas por el del satélite DSCOVR.</p>
-        <button className='ver-mas' onClick={handelUser3} >{interaccion?"Ver mas":"Cerrar"}</button>
+       
+        <button className='ver-mas' onClick={handelUser3} >{interaccion?"▼":"▲"}</button>
       </div>
       
       <div className='container' >
         <img src={img4} ref={myElementRef} alt=" 4" />
-        <h1> Exoplanet Archive </h1>
-        <p> Proporciona datos y metadatos sobre exoplanetas información sobre sus órbita y características físicas .</p>
-        <button className='ver-mas' onClick={handelUser4} >{interaccion?"Ver mas":"Cerrar"}</button>
+ 
+        <button className='ver-mas' onClick={handelUser4} >{interaccion?"▼":"▲"}</button>
       </div>
       
       <div className='container' >
         <img src={img5} ref={myElementRef} alt=" 5" />
-        <h1> Near Earth Object </h1>
-        <p> Ofrece información sobre objetos cercanos a la Tierra, como asteroides y cometas</p>
-        <button className='ver-mas' onClick={handelUser5} >{interaccion?"Ver mas":"Cerrar"}</button>
+       
+        <button className='ver-mas' onClick={handelUser5} >{interaccion?"▼":"▲"}</button>
       </div>
    
    </Carousel>

@@ -3,7 +3,7 @@ import {useState, useEffect } from 'react';
 
 import "./Component.css"
 
-export default function Component({info,titel,context}){
+export default function Component({info,title,context}){
     
     const [isActive1, setIsActive1] = useState(false);
     const [isActive2, setIsActive2] = useState(false);
@@ -104,8 +104,8 @@ console.log(info[0])
     }
 
 return(
-    <div id='miniRoot' className='container-photos'>
-        <h1>{titel}</h1>
+    <div  className='container-photos'>
+        <h1>{title}</h1>
         <p>{context}</p>
         <hr/>
         
@@ -113,7 +113,7 @@ return(
             
             <div className="card-container">
                     <img className={isActive1?"active":""} src={img1}/>
-                 <button onClick={handleClick1} className='btn'>{isActive1 ?"X":"Detalle"}</button>
+                 <button onClick={handleClick1} className='btn'>{isActive1 ?"▷":"◢"}</button>
                     {isActive1 && <InfoPhoto data={info1}/>}
                     
              </div>
@@ -122,55 +122,55 @@ return(
             
             <div className="card-container">
             <img className={isActive2?"active":""} src={img2}/>
-            <button onClick={handleClick2} className='btn'>{isActive2 ?"X":"Detalle"}</button>
+            <button onClick={handleClick2} className='btn'>{isActive2 ?"▷":"◢"}</button>
                     {isActive2 && <InfoPhoto data={info2}/>}
             </div>
             
             <div className="card-container">
             <img className={isActive3?"active":""} src={img3}/>
-                 <button onClick={handleClick3} className='btn'>{isActive3 ?"X":"Detalle"}</button>
+                 <button onClick={handleClick3} className='btn'>{isActive3 ?"▷":"◢"}</button>
                     {isActive3 && <InfoPhoto data={info3}/>}
             </div>
             
             <div className="card-container">
             <img className={isActive4?"active":""} src={img4}/>
-                 <button onClick={handleClick4} className='btn'>{isActive4 ?"X":"Detalle"}</button>
+                 <button onClick={handleClick4} className='btn'>{isActive4 ?"▷":"◢"}</button>
                     {isActive4 && <InfoPhoto data={info4}/>}
             </div>
             
             <div className="card-container">
             <img className={isActive5?"active":""} src={img5}/>
-                 <button onClick={handleClick5} className='btn'>{isActive5 ?"X":"Detalle"}</button>
+                 <button onClick={handleClick5} className='btn'>{isActive5 ?"▷":"◢"}</button>
                     {isActive5 && <InfoPhoto data={info5}/>}
             </div>
             
             <div className="card-container">
             <img className={isActive6?"active":""} src={img6}/>
-                 <button onClick={handleClick6} className='btn'>{isActive6 ?"X":"Detalle"}</button>
+                 <button onClick={handleClick6} className='btn'>{isActive6 ?"▷":"◢"}</button>
                     {isActive6 && <InfoPhoto data={inof6}/>}
             </div>
             
             <div className="card-container">
             <img className={isActive7?"active":""} src={img7}/>
-                 <button onClick={handleClick7} className='btn'>{isActive7 ?"X":"Detalle"}</button>
+                 <button onClick={handleClick7} className='btn'>{isActive7 ?"▷":"◢"}</button>
                     {isActive7 && <InfoPhoto data={info7}/>}
             </div>
             
             <div className="card-container">
             <img className={isActive8?"active":""} src={img8}/>
-                 <button onClick={handleClick8} className='btn'>{isActive8 ?"X":"Detalle"}</button>
+                 <button onClick={handleClick8} className='btn'>{isActive8 ?"▷":"◢"}</button>
                     {isActive8 && <InfoPhoto data={info8}/>}
             </div>
             
             <div className="card-container">
             <img className={isActive9?"active":""} src={img9}/>
-                 <button onClick={handleClick9} className='btn'>{isActive9 ?"X":"Detalle"}</button>
+                 <button onClick={handleClick9} className='btn'>{isActive9 ?"▷":"◢"}</button>
                     {isActive9 && <InfoPhoto data={info9}/>}
             </div>
             
             <div className="card-container">
             <img className={isActive10?"active":""} src={img10}/>
-                 <button onClick={handleClick10} className='btn'>{isActive10 ?"X":"Detalle"}</button>
+                 <button onClick={handleClick10} className='btn'>{isActive10 ?"▷":"◢"}</button>
                     {isActive10 && <InfoPhoto data={info10}/>}
             </div>
             
