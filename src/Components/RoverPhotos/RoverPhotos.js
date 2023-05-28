@@ -10,9 +10,11 @@ import React from 'react';
 import { useState,useEffect } from 'react';
 
 import Component from '../ComponentUniversal/Component';
-import ErrorComponent from "../Error Component/ErrorComponent";
 
+import "./Rover.css"
 
+// loader 
+import loaderMarte from "../../img/Loader/marte.gif"
 
 export default function RoverPhotos(){
 
@@ -22,6 +24,7 @@ export default function RoverPhotos(){
     const [Photos, setPhotos] = useState();
     
     const [error, setError] = useState();
+    
     
     useEffect(()=>{
         
@@ -51,7 +54,7 @@ export default function RoverPhotos(){
 
     return(
    <div>
-        {error && <ErrorComponent/>}
+       <img className='loader-marte' src={loaderMarte}/>
       {Photos && !error && <Component info={Photos} title={title} context={infoRover}/>}
    </div> 
     )

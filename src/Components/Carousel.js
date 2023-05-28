@@ -19,6 +19,8 @@ import NeoWs from './NeoWs/NeoWs';
 
 //const imgs =[img1,img2,img3,img4,img5]
 
+// loader 
+
 const MyCarousel = () => {
   
   const [interaccion, setInteraccion] = useState(true);
@@ -28,8 +30,11 @@ const MyCarousel = () => {
   const [visible3, setVisible3] = useState();
   const [visible4, setVisible4] = useState();
   const [visible5, setVisible5] = useState();
-  console.log(interaccion)
   
+  // set Loader 
+  
+  
+  //console.log(interaccion)
   const myElementRef = useRef(null);
   
   
@@ -86,7 +91,7 @@ const MyCarousel = () => {
       setInteraccion(true);
       setVisible3(null)
     }
-    console.log(interaccion)
+   // console.log(interaccion)
    //console.log(element.alt) // Obtengo info de la img que se ve en pantalla 
   }
   
@@ -104,8 +109,6 @@ const MyCarousel = () => {
     
     }
     console.log(interaccion)
-    
-   
    //console.log(element.alt) // Obtengo info de la img que se ve en pantalla 
   }
   

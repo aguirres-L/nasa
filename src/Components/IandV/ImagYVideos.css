@@ -1,9 +1,29 @@
 
+.header{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     text-align: center;
+    }
+
+.header p{
+    width: 50%;
+    }
+
+.body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    }
+
 .container-img-nasa{
     padding: 20px;
     margin: 20px;
     margin-left: 8%;
-}
+    }
 
 
 
@@ -15,7 +35,7 @@
     box-shadow: 0px 0px 10px black;
     margin: 2%;
     transition: all .3s ease;
-}
+    }
 
 .img-nasa:hover{
     box-shadow: 0px 0px 40px black;
@@ -24,4 +44,45 @@
     height: 210px;
     margin: 2.5%;
     
-}
+    }
+
+.Planeta{
+    width: 150px;
+    height: 150px;
+    }
+  
+.noImg {
+    width: 10px;
+    height: 100px;/* Ajusta el tamaño inicial de la imagen según tus necesidades */
+    animation: imageAnimation 3s infinite alternate; /* Ajusta la duración y efectos de la animación según tus necesidades */
+    border: solid 2px red;
+    }
+  
+/* Request API*/
+
+.resApi {
+    width: 40%;
+    height: 40%;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px grey;
+    }
+    
+    
+  
+  /*------------------------------------------------------------------*/
+  /*------------------------------------------------------------------*/
+  
+  @media screen and (max-width: 800px){
+  
+    .Planeta{
+        width: 50px;
+        height: 50px;
+    }
+    
+    .resApi {
+        width: 70%;
+        height: 70%;
+    }
+    
+  }
