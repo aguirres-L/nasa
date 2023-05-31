@@ -13,7 +13,7 @@ import img5 from "../img/NeoWs.jpg"
 import RoverPhotos from './RoverPhotos/RoverPhotos';
 import ImgAndVide from './IandV/ImgAndVide';
 import EarthPolychromatic from './EarthPolychromatic/EarthPolychromatic';
-import ExoplanetArchive from './ExoplanetArchive/ExoplanetArchive';
+import SphereScene from './ExoplanetArchive/ExoplanetArchive';
 import NeoWs from './NeoWs/NeoWs';
 
 
@@ -144,9 +144,9 @@ const MyCarousel = () => {
       showThumbs={false}
       infiniteLoop
       autoPlay={interaccion}
-      interval={3000} // Cambia el tiempo de espera entre imágenes
+      interval={1800} // Cambia el tiempo de espera entre imágenes
       transitionTime={1300} // Cambia el tiempo de transición entre imágenes     Ver con el code de react router para pdoer usar el browusers para poder navergar 
-      
+      swipeable={interaccion ? true : false} // Bloquea el desplazamiento si interaccion es false
     >
    
        <div className='container'  >
@@ -183,7 +183,7 @@ const MyCarousel = () => {
    {visible1  && <RoverPhotos/>}
    {visible2  && <ImgAndVide/>}
    {visible3  && <EarthPolychromatic/>}
-   {visible4  && <ExoplanetArchive/>}
+   {visible4  && <SphereScene/>}
    {visible5  && <NeoWs/>}
   {/** 
    <RoverPhotos/>
