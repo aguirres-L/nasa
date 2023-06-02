@@ -6,10 +6,18 @@ import './earth.css';
 export default function EarthPolychromatic() {
   const [requestApi, setRequestApi] = useState([]);
   
-    const fechaActual = new Date()              // uso el metodo date pra poder acceder a la fechas y poder capturar la fecha del dia anterior
-     const diaAnterior = fechaActual.getDate()-1;
+                // uso el metodo date pra poder acceder a la fechas y poder capturar la fecha del dia anterior
   
+     let fechaActual1 = new Date();
+
+     // Restar un día a la fecha actual
+     let fechaAyer = new Date();
+     fechaAyer.setDate(fechaActual1.getDate() - 1);
+     
+     // Obtener los componentes de la fecha de ayer
+     let diaAyer = fechaAyer.getDate();
   
+    //console.log(diaAyer,"gpt dia de ayer")
   
   useEffect(() => {
     const fetchEpicImages = async () => {
@@ -29,6 +37,8 @@ export default function EarthPolychromatic() {
 
     fetchEpicImages();
   }, []);
+  
+
 
   return (
     <div className='container-earth'>
@@ -56,7 +66,7 @@ export default function EarthPolychromatic() {
             <div className='earth-div' key={index}>
               <img
                 className='earth-img'
-                src={`https://epic.gsfc.nasa.gov/archive/natural/2023/05/${diaAnterior}/jpg/${el.image}.jpg`} // Tener en cuenta que la url se modifica en consecuencia de la fecha, siempre muestra img del dia anterior 
+                src={`https://epic.gsfc.nasa.gov/archive/natural/2023/05/${diaAyer}/jpg/${el.image}.jpg`} // Tener en cuenta que la url se modifica en consecuencia de la fecha, siempre muestra img del dia anterior 
                 alt={index}
               />
             </div>

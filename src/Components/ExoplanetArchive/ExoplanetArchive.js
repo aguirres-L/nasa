@@ -10,25 +10,26 @@ import sun from "./textura-Planeta/sun.jpg";
 
 const SphereScene = () => {
   const sceneRef = useRef(null);
+  const rendererRef = useRef(null);
   const [mounted, setMounted] = useState(false);
-  const [cameraPosition, setCameraPosition] = useState({ x: 0, y: 0, z: 35 });
   const [zoom, setZoom] = useState(1);
-
+  
+  const [setPlanet, setSetPlanet] = useState(-20);
+  
+  const [cameraPosition, setCameraPosition] = useState({ x:0, y: 0, z: 35 });
   useEffect(() => {
-    // Crea una escena, una cámara y un renderizador
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(100, 1000 / 600, 0.1, 600);
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-
-    // Establece el tamaño del renderizador
     const containerWidth = 1580;
     const containerHeight = 600;
-    renderer.setSize(containerWidth, containerHeight);
 
-    // Agrega el renderizador al elemento DOM
-    sceneRef.current.appendChild(renderer.domElement);
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(100, containerWidth / containerHeight, 0.1, 600);
 
-    // Crea las esferas
+    if (!rendererRef.current) {
+      rendererRef.current = new THREE.WebGLRenderer({ antialias: true });
+      rendererRef.current.setSize(containerWidth, containerHeight);
+      sceneRef.current.appendChild(rendererRef.current.domElement);
+    }
+
     const textureMart = new THREE.TextureLoader().load(Mars);
     const geometry = new THREE.SphereGeometry(2, 52, 52);
     const material = new THREE.MeshBasicMaterial({ map: textureMart });
@@ -48,56 +49,69 @@ const SphereScene = () => {
     const geometry4 = new THREE.SphereGeometry(0.5, 32, 32);
     const material4 = new THREE.MeshBasicMaterial({ map: textureLuna });
     const sphere4 = new THREE.Mesh(geometry4, material4);
+    
+    
+    // Ver estrellas
+    
+    const geometry5 = new THREE.SphereGeometry(60, 32, 32);
+    const material5 = new THREE.MeshBasicMaterial({ wireframe:true, color: 0xf00});
+    const sphere5 = new THREE.Mesh(geometry5, material5);
+  
+
 
     let animationFrameId;
     setMounted(true);
 
-    // Agrega las esferas a la escena
     scene.add(sphere);
     scene.add(sphere2);
     scene.add(sphere3);
     scene.add(sphere4);
+    scene.add(sphere5);
 
-    // Ajusta la posición de la cámara
-    camera.position.set(cameraPosition.x, cameraPosition.y, cameraPosition.z);
+    camera.position.set( cameraPosition.x,cameraPosition.y, cameraPosition.z); // añadp la posicion de la camara incial 
 
-    // Define la función de animación
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
 
-      // Gira las esferas
-      sphere.rotation.x += 0.01;
+      sphere.rotation.x += 0.003; // Marte
       sphere.rotation.y -= 0.02;
-      sphere.position.x = 20;//mart
-      
+      sphere.position.x = 1;
 
-      sphere2.rotation.x += 0.01;
-      sphere2.rotation.y -= 0.02;
-      sphere2.position.x = 2; // hacer un for para poder modificar la trarectoria de la luna 
+      sphere2.rotation.x += 0.003; // Tierra
+      sphere2.rotation.y -= 0;
+      sphere2.position.x = 25;
 
-      sphere3.rotation.x += 0.01;// sun
+      sphere3.rotation.x += 0.003; // Sol
       sphere3.rotation.y -= 0.01;
       sphere3.position.x = -40;
+
+      const orbitRadius = 5; // Radio de la órbita de la luna
+      const orbitSpeed = 0.02; // Velocidad de la órbita de la luna
+
+      // Calcula la posición de la luna en la órbita
+      const theta = Date.now() * 0.001 * orbitSpeed;
+      const x = Math.cos(theta) * orbitRadius;
+      const z = Math.sin(theta) * orbitRadius;
+
+      // Actualiza la posición de la luna
+      sphere4.position.set(x, 0, z);
+
+      sphere4.rotation.x = 10; // Estrella 
+      sphere4.rotation.y = 12;
+      sphere4.position.x = 26;
       
+      sphere5.rotation.x += 0.0001; // Marte
+      sphere5.rotation.y = 0.002;
 
-      sphere4.rotation.x += 0.01;
-      sphere4.rotation.y -= 0.02;
-      sphere4.position.x = 0.02;
-      
-
-
-      // Renderiza la escena con la cámara
-      renderer.render(scene, camera);
+      rendererRef.current.render(scene, camera);
     };
 
-    // Inicia la animación
     animate();
 
     if (mounted && !animationFrameId) {
       animate();
     }
 
-    // Limpia la escena al desmontar el componente
     return () => {
       scene.remove(sphere);
       scene.remove(sphere2);
@@ -115,24 +129,60 @@ const SphereScene = () => {
 
       geometry4.dispose();
       material4.dispose();
-
-      renderer.dispose();
     };
-  }, [cameraPosition]);
+  }, [cameraPosition || zoom ||setPlanet]);
 
-  const handleClickL = () => {
-    setCameraPosition(prevPosition => ({ ...prevPosition, z: prevPosition.z - 10 }));
-    setZoom(prevZoom => prevZoom + 0.1);
+  const handleKeyDown = (event) => {
+  
+  // zoom
+  
+    if (event.key === "+") {
+      setCameraPosition(prevPosition => ({ ...prevPosition, z: prevPosition.z - 10 }));
+      setZoom(prevZoom => prevZoom + 0.1);
+    } 
+    if (event.key === "-") {
+      setCameraPosition(prevPosition => ({ ...prevPosition, z: prevPosition.z + 10 }));
+      setZoom(prevZoom => Math.max(prevZoom - 0.1, 0.1));
+    }
+     
+     console.log(event.key);
+    
+    
+    // Puedo moverme 
+    if(event.key ==="4"){
+      setCameraPosition(prevPosition => ({ ...prevPosition, x: prevPosition.x - 10 }));
+
+    }
+    
+    if(event.key ==="6"){
+      setCameraPosition(prevPosition => ({ ...prevPosition, x: prevPosition.x + 10 }));
+
+    }
+    if(event.key ==="8"){
+      setCameraPosition(prevPosition => ({ ...prevPosition, y: prevPosition.y + 10 }));
+
+    }
+    if(event.key ==="2"){
+      setCameraPosition(prevPosition => ({ ...prevPosition, y: prevPosition.y - 10 }));
+
+    }
+    
+    
+    
   };
 
-  const handleClickR = () => {
-    setCameraPosition(prevPosition => ({ ...prevPosition, z: prevPosition.z + 10 }));
-    setZoom(prevZoom => Math.max(prevZoom - 0.1, 0.1));
-  };
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   return (
     <div className='container-exoplaneta'>
-      <div onClick={handleClickL} onContextMenu={handleClickR} className='ver2' ref={sceneRef} />
+      <div className='container-fixed'>
+        <div className='ver2' ref={sceneRef} />
+      </div>
     </div>
   );
 };

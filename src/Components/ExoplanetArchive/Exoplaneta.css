@@ -1,4 +1,19 @@
-
-.ver2{
+.container-exoplaneta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: all .3s ease;
+    
+  }
+  
+  .container-fixed {
+    width: 1580px; /* Establece el ancho fijo del contenedor */
+    transition: all .3s ease;
+  }
+  
+  .ver2 {
     width: 100%;
-}
+    height: 100%;
+  }
+  
